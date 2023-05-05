@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Povrch
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Povrch
   - Water
   - UI
   - 
