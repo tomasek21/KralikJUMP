@@ -21,7 +21,9 @@ public class AutoJump : MonoBehaviour
 
     void Update()
     {
-     
+        // Detekce povrchu pomocí raycastu
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckRadius, groundLayer);
+        isGrounded = hit.collider != null;
     }
 
     void FixedUpdate()
