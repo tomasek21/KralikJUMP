@@ -14,6 +14,8 @@ public class AutoJump : MonoBehaviour
     private Rigidbody2D rb; // Komponenta Rigidbody2D
     private bool shouldJump; // Indikátor, zda by mìl hráè skoèit
 
+    public Joystick joy;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,25 +23,23 @@ public class AutoJump : MonoBehaviour
 
     void Update()
     {
-        // Detekce povrchu pomocí raycastu
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckRadius, groundLayer);
-        isGrounded = hit.collider != null;
+        gameObject.transform.position += new Vector3(joy.Horizontal*Time.deltaTime * 3, 0, 0);
+      
     }
 
     void FixedUpdate()
     {   // Detekce povrchu
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckRadius, groundLayer);
+        isGrounded = hit.collider != null;
+      
 
-        // Nastavení indikátoru pro skok, pokud je hráè na zemi
         if (isGrounded)
         {
-            shouldJump = true;
+          
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
         // Skok, pokud by mìl hráè skoèit
-        if (shouldJump)
-        {
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-            shouldJump = false;
-        }
+   
+
     }
 }
