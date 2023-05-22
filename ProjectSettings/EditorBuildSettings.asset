@@ -8,14 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 6436679689f0ad14abfb97d805757249
   - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
-    guid: 128f113a08debd44ea8f4392841bc6ac
-  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: 128f113a08debd44ea8f4392841bc6ac
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 9152c65b961464640b5efd5b9479a21c, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 37b6c5454f1b04d44a0f1a807bfdd3c6, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f2cd90a480b6d6248a1034ad4baf25bb, type: 2}

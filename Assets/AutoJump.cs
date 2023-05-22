@@ -15,11 +15,12 @@ public class AutoJump : MonoBehaviour
     private Rigidbody2D rb; // Komponenta Rigidbody2D
     private bool shouldJump; // Indik�tor, zda by m�l hr�� sko�it
 
-    public Joystick joy;
-
     private bool isFalling; // Indikátor, zda hráč padá
 
     public string gameOverSceneName = "GameOverScene"; // Název scény, která se má načíst po pádu hráče
+
+    public float moveSpeed = 5f; // Rychlost pohybu postavy
+    public float tiltMultiplier = 2f; // Násobitel pro zvýšení náklonu zařízení
 
     void Start()
     {
@@ -28,7 +29,11 @@ public class AutoJump : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.position += new Vector3(joy.Horizontal*Time.deltaTime * 3, 0, 0);
+        float tilt = Input.acceleration.x * tiltMultiplier; // Získání hodnoty náklonu zařízení v ose X a aplikace násobitel
+
+        // Pohyb postavy na základě naklánění zařízení
+        Vector3 movement = new Vector3(tilt, 0f, 0f) * moveSpeed * Time.deltaTime;
+        transform.position += movement;
 
         // Detekce pádu
         if (transform.position.y < -3.5f) // Přizpůsob hodnotu -10f dle svých potřeb
